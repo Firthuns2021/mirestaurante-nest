@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { RestauranteService } from './services/restaurante.service';
 import { RestauranteDto } from './dto/restaurante.dto';
 
@@ -7,7 +7,7 @@ export class RestaurantesController {
   constructor(private readonly restauranteService: RestauranteService) {}
 
   @Post('restaurante/register')
-  async register(@Body() createRestauranteDTO: RestauranteDto){
+  async register(@Body() createRestauranteDTO: RestauranteDto) {
     return this.restauranteService.create(createRestauranteDTO);
   }
 
@@ -19,5 +19,4 @@ export class RestaurantesController {
   async getRestaurante(@Param('idRestaurante') idRestaurante: string) {
     return this.restauranteService.getRestaurante(idRestaurante);
   }
-
 }
