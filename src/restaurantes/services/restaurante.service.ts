@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { RestauranteDto } from '../dto/restaurante.dto';
 
+
 @Injectable()
 export class RestauranteService {
   constructor(
@@ -23,5 +24,14 @@ export class RestauranteService {
     return this.restauranteModel.findOne({
       _id: idRestaurante,
     });
+  }
+  async getRestauranteCat(categoria: string): Promise<Restaurante[]> {
+    return this.restauranteModel.find({
+      categoria: categoria,
+    });
+  }
+
+  async getCategorias(): Promise<string[]> {
+    return this.restauranteModel.find().distinct('categoria');
   }
 }

@@ -19,4 +19,13 @@ export class RestaurantesController {
   async getRestaurante(@Param('idRestaurante') idRestaurante: string) {
     return this.restauranteService.getRestaurante(idRestaurante);
   }
+
+  @Get('categoria/:catRestaurante')
+  async getRestauranteCat(@Param('catRestaurante') catRestaurante: string) {
+    return this.restauranteService.getRestauranteCat(catRestaurante);
+  }
+
+  @Get('categorias') async getCategorias() {
+    return this.restauranteService.getCategorias();
+  }
 }

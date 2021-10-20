@@ -9,7 +9,8 @@ import { RestaurantesModule } from './restaurantes/restaurantes.module';
   imports: [
     MongooseModule.forRoot(
       // 'mongodb+srv://ferRoot:2ZC6nHhloTLORQvm@cluster0.cyira.mongodb.net/restauranteNestjs?retryWrites=true&w=majority',
-      'mongodb+srv://ferRoot:2ZC6nHhloTLORQvm@cluster0.cyira.mongodb.net/restauranteNestjs',
+      'mongodb+srv://ferRoot:kPaH1cwjSLq6rmBh@cluster0.cyira.mongodb.net/restauranteNestjs',
+      // mongodb+srv://ferRoot:<password>@cluster0.cyira.mongodb.net/test
     ),
     RestaurantesModule,
   ],
