@@ -34,4 +34,13 @@ export class RestauranteService {
   async getCategorias(): Promise<string[]> {
     return this.restauranteModel.find().distinct('categoria');
   }
+
+  // Búsqueda por nombre. Utilizamos la expresión regular con parámetro
+  // para que no distinga entre mayñuscula y minuscula
+  async getNombreRestaurante(nombreRest: string): Promise<Restaurante[]> {
+    // creamos 1º lugar la expresión regular
+    const regex = new RegExp(nombreRest, 'i');
+
+    return this.restauranteModel.find({ nombre: { $regex: regex } });
+  }
 }

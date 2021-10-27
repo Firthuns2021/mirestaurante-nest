@@ -28,4 +28,10 @@ export class RestaurantesController {
   @Get('categorias') async getCategorias() {
     return this.restauranteService.getCategorias();
   }
+
+  @Get('restaurantes/nombre/:nombreRest') async getNombreRestaurante(
+    @Param('nombreRest') nombreRest: string,
+  ) {
+    return await this.restauranteService.getNombreRestaurante(nombreRest);
+  }
 }
