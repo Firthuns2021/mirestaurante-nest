@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { RestauranteService } from './services/restaurante.service';
 import { RestauranteDto } from './dto/restaurante.dto';
 
@@ -33,5 +33,13 @@ export class RestaurantesController {
     @Param('nombreRest') nombreRest: string,
   ) {
     return await this.restauranteService.getNombreRestaurante(nombreRest);
+  }
+
+  @Put('restaurantes/:idRest')
+  async updateRestaurante(
+    @Body() restDTO: RestauranteDto,
+    @Param('idRest') idRest: string,
+  ) {
+    return await this.restauranteService.updateRestaurante(idRest, restDTO);
   }
 }

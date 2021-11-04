@@ -43,4 +43,15 @@ export class RestauranteService {
 
     return this.restauranteModel.find({ nombre: { $regex: regex } });
   }
+
+  // Creo el actualizar restaurante para además de actualizar datos, añadir comentarios
+  async updateRestaurante(
+    idRestaurante: string,
+    restauranteDTO: RestauranteDto,
+  ): Promise<Restaurante> {
+    return await this.restauranteModel.findOneAndUpdate(
+      { _id: idRestaurante },
+      restauranteDTO,
+    );
+  }
 }
