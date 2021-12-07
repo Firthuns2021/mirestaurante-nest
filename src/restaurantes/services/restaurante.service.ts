@@ -49,7 +49,7 @@ export class RestauranteService {
     idRestaurante: string,
     restauranteDTO: RestauranteDto,
   ): Promise<Restaurante> {
-    return await this.restauranteModel.findOneAndUpdate(
+    return this.restauranteModel.findOneAndUpdate(
       { _id: idRestaurante },
       restauranteDTO,
     );

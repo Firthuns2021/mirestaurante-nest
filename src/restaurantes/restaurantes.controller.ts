@@ -35,11 +35,10 @@ export class RestaurantesController {
     return await this.restauranteService.getNombreRestaurante(nombreRest);
   }
 
-  @Put('restaurantes/:idRest')
+  @Put('restaurante/:idRest')
   async updateRestaurante(
     @Body() restDTO: RestauranteDto,
-    @Param('idRest') idRest: string,
-  ) {
+    @Param('idRest') idRest: string  ) {
     return await this.restauranteService.updateRestaurante(idRest, restDTO);
   }
 }
