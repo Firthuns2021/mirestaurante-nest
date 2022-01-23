@@ -4,11 +4,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { RestauranteDto } from '../dto/restaurante.dto';
 
-
 @Injectable()
 export class RestauranteService {
   constructor(
-    @InjectModel('Restaurante') private restauranteModel: Model<Restaurante>,
+    @InjectModel('Restaurante')
+    private restauranteModel: Model<Restaurante>,
   ) {}
 
   async create(createRestauranteDTO: RestauranteDto): Promise<Restaurante> {
@@ -25,6 +25,7 @@ export class RestauranteService {
       _id: idRestaurante,
     });
   }
+
   async getRestauranteCat(categoria: string): Promise<Restaurante[]> {
     return this.restauranteModel.find({
       categoria: categoria,
@@ -35,16 +36,15 @@ export class RestauranteService {
     return this.restauranteModel.find().distinct('categoria');
   }
 
-  // Búsqueda por nombre. Utilizamos la expresión regular con parámetro
-  // para que no distinga entre mayñuscula y minuscula
+  // Búsqueda por nombre. Utilizamos la expresión regular con parámetro i
+  // para que no distinga entre mayúsculas y minúsculas
   async getNombreRestaurante(nombreRest: string): Promise<Restaurante[]> {
-    // creamos 1º lugar la expresión regular
+    // Creamos en primer lugar la expresión regular
     const regex = new RegExp(nombreRest, 'i');
-
     return this.restauranteModel.find({ nombre: { $regex: regex } });
   }
 
-  // Creo el actualizar restaurante para además de actualizar datos, añadir comentarios
+  // Creamos el actualizar restaurante para poder añadir los comentarios
   async updateRestaurante(
     idRestaurante: string,
     restauranteDTO: RestauranteDto,

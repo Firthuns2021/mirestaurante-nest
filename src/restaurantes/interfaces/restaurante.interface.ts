@@ -1,8 +1,7 @@
 import { Document } from 'mongoose';
-import { Comentario } from "../dto/Comentario";
+import { Comentario } from '../dto/Comentario';
 
 export interface Restaurante extends Document {
-
   _id: string;
   nombre: string;
   imgLogo: string;
