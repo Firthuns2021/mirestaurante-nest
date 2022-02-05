@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface Country extends Document {
+export interface CountriesStates extends Document {
   country: string;
   states: string[];
 }

@@ -8,6 +8,7 @@ export class CountriesController {
   async getCountries() {
     return await this.countryService.getCountries();
   }
+
   @Get('/country/:country')
   async getCountry(@Param('country') country: string) {
     return await this.countryService.getStates(country);
